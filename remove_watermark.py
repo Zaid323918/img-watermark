@@ -1,6 +1,10 @@
 import cv2
 import numpy as np
 
+'''
+Attempts to remove watermark
+'''
+
 def remove_watermark(image):
   
     # Convert the image to grayscale

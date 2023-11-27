@@ -1,6 +1,12 @@
 import cv2
 import numpy as np
 
+
+'''
+Adding watermark to the center of the image
+'''
+
+
 def watermark_image(image, watermark):
     # calculating dimensions 
     # height and width of the logo 
