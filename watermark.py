@@ -1,5 +1,5 @@
-import numpy as np
 import cv2
+import numpy as np
 
 def watermark_image(image, watermark):
     # calculating dimensions 
