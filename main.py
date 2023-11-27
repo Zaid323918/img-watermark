@@ -12,7 +12,7 @@ def main():
     watermark = cv2.imread(watermark_path, cv2.IMREAD_UNCHANGED)    # reading img
 
     # Remove the watermark
-    result = watermark_image(image, watermark)
+    result = remove_watermark(image, watermark)
 
     # Display the original image
     print("Original Image:")
