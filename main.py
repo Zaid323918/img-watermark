@@ -1,4 +1,5 @@
 from watermark import watermark_image
+from remove_watermark import remove_watermark
 import cv2
 
 def main():
