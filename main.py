@@ -1,6 +1,6 @@
 from watermark import watermark_image
 from remove_watermark import remove_watermark
-from input_handling import get_input, get_filename
+from input_handling import get_input, get_filename, get_scale, get_transparency
 import cv2
 
 def main():
@@ -13,7 +13,10 @@ def main():
     watermark = cv2.imread(watermark_path)
 
     if choice == 1:
-        watermarked_image = watermark_image(image, watermark, scale=0.1, transparency=0.3)
+        scale = get_scale()
+        transparency = get_transparency()
+
+        watermarked_image = watermark_image(image, watermark, scale=scale, transparency=transparency)
         cv2.imwrite('watermarked_image.jpg', watermarked_image)
 
     elif choice == 2:
