@@ -28,13 +28,18 @@ def WatermarkImage(Image, Watermark):
     
     return WatermarkedImage
 
-def watermark_image(image, watermark):
-    # calculating dimensions 
-    # height and width of the logo 
-    h_logo, w_logo, _ = watermark.shape 
-    
+def watermark_image(image, watermark, scale, transparency):
+
     # height and width of the image 
     h_img, w_img, _ = image.shape 
+
+    # resize the watermark
+    resized_watermark = cv2.resize(watermark, (int(h_img * scale), int(w_img * scale)), interpolation=cv2.INTER_AREA)
+
+    # calculating dimensions 
+    # height and width of the logo 
+    h_logo, w_logo, _ = resized_watermark.shape 
+    
     
     # calculating coordinates of center 
     # calculating center, where we are going to  
@@ -50,5 +55,8 @@ def watermark_image(image, watermark):
     
     # adding watermark to the image 
     destination = image[top_y:bottom_y, left_x:right_x] 
-    result = cv2.addWeighted(destination, 1, watermark, 0.5, 0) 
-    return result
+    local_result = cv2.addWeighted(destination, transparency, resized_watermark, 1-transparency, 0) 
+
+    global_result = np.copy(image)
+    global_result[top_y:bottom_y, left_x:right_x] = local_result
+    return global_result

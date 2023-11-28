@@ -13,7 +13,7 @@ def main():
     watermark = cv2.imread(watermark_path)
 
     if choice == 1:
-        watermarked_image = watermark_image(image, watermark)
+        watermarked_image = watermark_image(image, watermark, scale=0.1, transparency=0.3)
         cv2.imwrite('watermarked_image.jpg', watermarked_image)
 
     elif choice == 2:
