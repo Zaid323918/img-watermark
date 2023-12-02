@@ -7,7 +7,7 @@ Adding watermark to the center of the image
 '''
 
 
-def watermark_image(image, watermark, scale, transparency, blur):
+def watermark_image(image, watermark, scale, transparency, blur, x_pos, y_pos):
 
     # height and width of the image 
     h_img, w_img, _ = image.shape 
@@ -23,10 +23,7 @@ def watermark_image(image, watermark, scale, transparency, blur):
     # height and width of the logo 
     h_logo, w_logo, _ = resized_watermark.shape 
     
-    
     # calculating coordinates of center 
-    # calculating center, where we are going to  
-    # place our watermark 
     center_y = int(h_img/2) 
     center_x = int(w_img/2) 
     
@@ -35,6 +32,22 @@ def watermark_image(image, watermark, scale, transparency, blur):
     left_x = center_x - int(w_logo/2) 
     bottom_y = top_y + h_logo 
     right_x = left_x + w_logo 
+
+    # change bounds if center is not selected
+    LEFT, RIGHT, TOP, BOTTOM = 1,3,1,3
+    if x_pos == LEFT:
+        left_x = 0
+        right_x = left_x + w_logo
+    elif x_pos == RIGHT:
+        right_x = w_img - 1
+        left_x = right_x - w_logo
+    
+    if y_pos == TOP:
+        top_y = 0
+        right_x = top_y + h_logo
+    elif y_pos == BOTTOM:
+        bottom_y = h_img - 1
+        top_y = bottom_y - h_logo
     
     # adding watermark to the image 
     destination = image[top_y:bottom_y, left_x:right_x] 

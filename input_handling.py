@@ -37,11 +37,11 @@ def get_scale() -> float:
     scale_str = ''
     scale = 0.0
     while scale_str == '':
-        scale_str = input('Please enter the desired scale of the watermark compared to the image (0 - 1): ')
+        scale_str = input('Please enter the desired scale of the watermark compared to the image (0 - 0.8): ')
         try:
             scale = float(scale_str)
-            if scale > 1.0 or scale < 0.0:
-                print(f'Sorry, {scale_str} is not in the range (0 - 1).\n')
+            if scale > 0.8 or scale < 0.0:
+                print(f'Sorry, {scale_str} is not in the range (0 - 0.8).\n')
                 scale_str = ''
                 continue
         except:
@@ -85,3 +85,33 @@ def get_blur() -> bool:
         return True
 
     return False
+
+def get_pos_top_to_bottom() -> int:
+    choice = ''
+    while choice not in ['1', '2', '3']:
+        print('Please choose what height to place the watermark:')
+        print('1. Top')
+        print('2. Middle')
+        print('3. Bottom')
+
+        choice = input('Input a number: ')
+
+        if choice not in ['1', '2', '3']:
+            print(f'\nSorry, {choice} is not a valid option.\n')
+
+    return int(choice)
+
+def get_pos_left_to_right() -> int:
+    choice = ''
+    while choice not in ['1', '2', '3']:
+        print('Please choose what location left to right to place the watermark:')
+        print('1. Left')
+        print('2. Middle')
+        print('3. Right')
+
+        choice = input('Input a number: ')
+
+        if choice not in ['1', '2', '3']:
+            print(f'\nSorry, {choice} is not a valid option.\n')
+
+    return int(choice)

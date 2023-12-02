@@ -1,6 +1,6 @@
 from watermark import watermark_image
 from remove_watermark import remove_watermark
-from input_handling import get_input, get_filename, get_scale, get_transparency, get_blur
+from input_handling import get_input, get_filename, get_scale, get_transparency, get_blur, get_pos_top_to_bottom, get_pos_left_to_right
 import cv2
 
 def main():
@@ -16,8 +16,10 @@ def main():
         scale = get_scale()
         transparency = get_transparency()
         blur = get_blur()
+        y_pos = get_pos_top_to_bottom()
+        x_pos = get_pos_left_to_right()
 
-        watermarked_image = watermark_image(image, watermark, scale=scale, transparency=transparency, blur=blur)
+        watermarked_image = watermark_image(image, watermark, scale=scale, transparency=transparency, blur=blur, x_pos=x_pos, y_pos=y_pos)
         cv2.imwrite('watermarked_image.jpg', watermarked_image)
 
     elif choice == 2:
