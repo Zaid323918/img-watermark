@@ -7,7 +7,8 @@ def remove_watermark(image, watermark, scale, transparency, blur, x_pos, y_pos):
     h_img, w_img, _ = image.shape 
 
     # resize the watermark
-    resized_watermark = cv2.resize(watermark, (int(h_img * scale), int(w_img * scale)), interpolation=cv2.INTER_AREA)
+    smallest_dimension_size = min(w_img, h_img)
+    resized_watermark = cv2.resize(watermark, (int(smallest_dimension_size * scale), int(smallest_dimension_size * scale)), interpolation=cv2.INTER_AREA)
 
     # blur the watermark if necessary
     if blur:
@@ -38,7 +39,7 @@ def remove_watermark(image, watermark, scale, transparency, blur, x_pos, y_pos):
     
     if y_pos == TOP:
         top_y = 0
-        right_x = top_y + h_logo
+        bottom_y = top_y + h_logo
     elif y_pos == BOTTOM:
         bottom_y = h_img - 1
         top_y = bottom_y - h_logo
