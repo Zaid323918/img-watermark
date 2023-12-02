@@ -37,11 +37,11 @@ def get_scale() -> float:
     scale_str = ''
     scale = 0.0
     while scale_str == '':
-        scale_str = input('Please enter the desired scale of the watermark compared to the image (0 - 0.8): ')
+        scale_str = input('Please enter the desired scale of the watermark compared to the image (0.1 - 0.9): ')
         try:
             scale = float(scale_str)
-            if scale > 0.8 or scale < 0.0:
-                print(f'Sorry, {scale_str} is not in the range (0 - 0.8).\n')
+            if scale > 0.9 or scale < 0.1:
+                print(f'Sorry, {scale_str} is not in the range (0.1 - 0.9).\n')
                 scale_str = ''
                 continue
         except:

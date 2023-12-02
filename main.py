@@ -12,18 +12,18 @@ def main():
     image = cv2.imread(image_path)
     watermark = cv2.imread(watermark_path)
 
-    if choice == 1:
-        scale = get_scale()
-        transparency = get_transparency()
-        blur = get_blur()
-        y_pos = get_pos_top_to_bottom()
-        x_pos = get_pos_left_to_right()
+    scale = get_scale()
+    transparency = get_transparency()
+    blur = get_blur()
+    y_pos = get_pos_top_to_bottom()
+    x_pos = get_pos_left_to_right()
 
+    if choice == 1:
         watermarked_image = watermark_image(image, watermark, scale=scale, transparency=transparency, blur=blur, x_pos=x_pos, y_pos=y_pos)
         cv2.imwrite('watermarked_image.jpg', watermarked_image)
 
     elif choice == 2:
-        unwatermarked_image = remove_watermark(image, watermark)
+        unwatermarked_image = remove_watermark(image, watermark, scale=scale, transparency=transparency, blur=blur, x_pos=x_pos, y_pos=y_pos)
         cv2.imwrite('image_stripped_of_watermark.jpg', unwatermarked_image)
 
 # Call the main function
