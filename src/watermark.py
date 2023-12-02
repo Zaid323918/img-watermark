@@ -13,7 +13,7 @@ def watermark_image(image, watermark, scale, transparency, blur, x_pos, y_pos):
     h_img, w_img, _ = image.shape 
 
     # resize the watermark
-    resized_watermark = cv2.resize(watermark, (int(h_img * scale), int(w_img * scale)), interpolation=cv2.INTER_AREA)
+    resized_watermark = cv2.resize(watermark, (int(w_img * scale), int(h_img * scale)), interpolation=cv2.INTER_AREA)
 
     # blur the watermark if necessary
     if blur:
