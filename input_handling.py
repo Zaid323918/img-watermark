@@ -68,3 +68,20 @@ def get_transparency() -> float:
             continue
 
     return transparency
+
+def get_blur() -> bool:
+    choice = ''
+    while choice not in ['1', '2']:
+        print('Please choose whether to blur the image or not:')
+        print('1. Blur the image')
+        print('2. Do not blur the image')
+        
+        choice = input('Input a number: ')
+
+        if choice not in ['1', '2']:
+            print(f'\nSorry, {choice} is not a valid option.\n')
+
+    if choice == '1':
+        return True
+
+    return False
