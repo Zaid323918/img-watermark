@@ -3,6 +3,7 @@ from remove_watermark import remove_watermark
 from input_handling import get_input, get_filename, get_scale, get_transparency, get_blur, get_pos_top_to_bottom, get_pos_left_to_right
 import cv2
 
+# Driver code 
 def main():
     choice = get_input()
 

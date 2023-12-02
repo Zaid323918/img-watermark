@@ -8,6 +8,22 @@ Adding watermark to the center of the image
 
 
 def watermark_image(image, watermark, scale, transparency, blur, x_pos, y_pos):
+    """
+    Adds watermark to an image. 
+
+    Parameters: 
+    image (numpy.ndarray): The input image to place the watermark on.
+    watermark (numpy.ndarray): The image to watermark the first parameter with.
+    scale (float): The size difference between the image and the watermark.
+    transparency (float): Controls how transparent the watermark should be on the image.
+    blur (bool): Decide whether to blur the watermark or not. 
+    x_pos (int): Controls the placement of the watermark in the x direction.
+    y_pos (int): Controls the placement of the watermark in the y direction.
+
+    Returns: 
+        The output image with the watermark placed on it 
+    
+    """
 
     # height and width of the image 
     h_img, w_img, _ = image.shape 
@@ -56,4 +72,5 @@ def watermark_image(image, watermark, scale, transparency, blur, x_pos, y_pos):
 
     global_result = np.copy(image)
     global_result[top_y:bottom_y, left_x:right_x] = local_result
+
     return global_result
